@@ -1,4 +1,3 @@
-```markdown
 # Sentry AI: Agentic Spam & Phishing Detection System
 **Category:** 5th Semester Mini-Project | CSE AIML & IoT  
 **Developer:** Ritee & Team  
@@ -110,5 +109,3 @@ Used to verify if the server is online.
 * `models/`: Saved `.pkl` files (Brain & Vectorizer)
 * `data/`: Datasets and live production logs
 * `requirements.txt`: Project dependencies
-
-```
