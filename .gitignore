@@ -1,0 +1,15 @@
+# Python caches
+__pycache__/
+*.pyc
+
+# Virtual environments
+spam/
+env/
+venv/
+
+# Data and Models (Keep local if they are large)
+data/api_logs.csv
+models/*.pkl
+
+# OS files
+.DS_Store
