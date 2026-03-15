@@ -1,61 +1,54 @@
+from datetime import datetime
+import csv
 from fastapi import FastAPI, HTTPException
 from pydantic import BaseModel
 import joblib
 import os
-import asyncio
 from src.predict import extract_url
 from src.investigator import investigate_url
 
 app = FastAPI(title="Sentry AI Production API")
 
-# --- Path Configuration ---
+# --- Load Models ---
 base_path = os.path.dirname(__file__)
 model = joblib.load(os.path.join(base_path, '../models/sentry_model.pkl'))
 tfidf = joblib.load(os.path.join(base_path, '../models/tfidf_vectorizer.pkl'))
 
-# Define the data format the API expects
 class MessageRequest(BaseModel):
     text: str
     sender: str = "Unknown"
 
+@app.get("/health")
+def health():
+    return {"status": "online", "server": "HP-Victus", "time": str(datetime.now())}
+
 @app.post("/analyze")
 async def analyze_message(request: MessageRequest):
-    # 1. ML Analysis
     data = tfidf.transform([request.text])
     prob_scam = float(model.predict_proba(data)[0][1])
     
-    verdict = "SAFE"
-    reason = "ML confidence low"
+    verdict, reason = "SAFE", "Low scam confidence"
 
-    with open("data/api_logs.csv", "a") as f:
-        f.write(f"{request.sender},{request.text},{verdict}\n")
-
-    # 2. Multi-Stage Logic
     if prob_scam > 0.85:
-        verdict = "SCAM"
-        reason = "High-confidence textual match"
-    
+        verdict, reason = "SCAM", "High-confidence textual match"
     elif prob_scam > 0.35:
         url = extract_url(request.text)
         if url:
             report = await investigate_url(url)
             if report.get("is_malicious"):
-                verdict = "SCAM"
-                reason = f"Agent flagged link: {report.get('reason', 'Malicious content')}"
+                verdict, reason = "SCAM", f"Agent flagged: {report.get('reason')}"
             else:
-                verdict = "SAFE"
-                reason = "Agent cleared the link destination"
+                verdict, reason = "SAFE", "Agent cleared destination"
         else:
-            verdict = "SUSPICIOUS"
-            reason = "Suspicious text patterns found"
+            verdict, reason = "SUSPICIOUS", "Bypassed Agent (No link found)"
 
-    return {
-        "message": request.text,
-        "verdict": verdict,
-        "confidence": f"{prob_scam:.2%}",
-        "reason": reason
-    }
+    # --- THE PRODUCTION LOG ---
+    log_file = os.path.join(base_path, '../data/production_logs.csv')
+    file_exists = os.path.isfile(log_file)
+    with open(log_file, 'a', newline='', encoding='utf-8') as f:
+        writer = csv.writer(f)
+        if not file_exists:
+            writer.writerow(['timestamp', 'sender', 'message', 'verdict', 'reason'])
+        writer.writerow([datetime.now(), request.sender, request.text.strip(), verdict, reason])
 
-if __name__ == "__main__":
-    import uvicorn
-    uvicorn.run(app, host="0.0.0.0", port=8000)
+    return {"verdict": verdict, "confidence": f"{prob_scam:.2%}", "reason": reason}

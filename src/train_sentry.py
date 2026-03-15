@@ -42,8 +42,9 @@ y_pred = model.predict(X_test)
 print(f"🎯 Production Accuracy: {accuracy_score(y_test, y_pred) * 100:.2f}%")
 print("\n📋 Full Classification Report:\n", classification_report(y_test, y_pred))
 
-# 7. Save to the /models folder
+# 7. Save to the /models folder using the path variables defined at the top
 joblib.dump(model, model_save_path)
-joblib.dump(tfidf, vec_save_path)
+joblib.dump(tfidf, vec_save_path) # Changed from hardcoded string to variable
 
-print(f"✅ Production Brain saved to /models/")
+print(f"✅ Production Brain saved to: {os.path.abspath(model_save_path)}")
+print(f"✅ Vectorizer saved to: {os.path.abspath(vec_save_path)}")
