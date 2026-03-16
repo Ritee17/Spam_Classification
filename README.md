@@ -1,47 +1,48 @@
-# Sentry AI: Agentic Spam & Phishing Detection System
-**Category:** IIT Kanpur hackathon Project| CSE AIML & IoT  
-**Developer:** Ritee & Team  
+# 🛡️ Sentry AI: Hybrid Multi-Stage Phishing Detection System
+**Category:** IIT Kanpur Hackathon Project | CSE AIML & IoT  
+**Developer:** Ritee & Team
 
-Sentry AI is a hybrid security system that moves beyond simple text classification. It uses a **Random Forest** model to detect spam patterns and an **Agentic URL Investigator** (powered by Playwright) to analyze live website destinations for phishing threats.
+Sentry AI is a high-performance security engine that moves beyond simple text classification. It utilizes a **Cascading Hybrid Architecture**—combining a Fast-Path Random Forest model with a Deep-Path DistilBERT Transformer—to detect sophisticated phishing attempts that traditional models miss.
 
 ---
 
 ## 🏗️ System Architecture
-The project is built as a **Decoupled API Service**, allowing Android apps and Chrome extensions to connect to a centralized "AI Brain."
+The project is built as a **Decoupled API Service**, allowing multi-device connectivity (Mobile/Web) to a centralized "AI Brain."
 
-1. **Sentry (ML Layer):** TF-IDF + Random Forest Classifier trained on Hinglish and Global spam datasets.
-2. **Investigator (Agent Layer):** A headless Chromium agent that follows suspicious links to audit page metadata in real-time.
-3. **The Bridge (FastAPI):** A production-ready API that logs every request for future "Active Learning" retraining.
+1. **Adversarial Shield (Pre-processor):** Uses `unidecode` and regex to neutralize "Leet-speak," homoglyphs, and Unicode-based obfuscation.
+2. **Sentry ML (Fast-Path):** N-Gram Tfidf + Random Forest Classifier for instant, low-latency detection of known scam patterns.
+3. **Transformer (Deep-Path):** A DistilBERT-based Deep Learning layer that analyzes the *contextual intent* and *urgency* of subtle phishing messages.
+4. **Intelligence Audit:** A real-time WHOIS investigator that audits domain registration dates to flag "Zero-Day" infrastructure.
 
 ---
 
 ## 🛠️ Tech Stack
 - **Language:** Python 3.10+
+- **Deep Learning:** Hugging Face Transformers (DistilBERT)
 - **ML Framework:** Scikit-Learn (Random Forest)
-- **Agentic Engine:** Playwright (Chromium)
-- **Backend:** FastAPI & Uvicorn
-- **OS:** Ubuntu 22.04 (HP Victus)
+- **Backend:** FastAPI & Uvicorn (Asynchronous)
+- **OS:** Ubuntu 22.04 (HP Victus Optimized)
 
 ---
 
 ## 🚀 Getting Started
 
 ### 1. Installation
-Clone the repository and set up the environment:
+Clone the repository and install the advanced dependency stack:
+
 ```bash
 # Create Virtual Environment
 python3 -m venv spam
 source spam/bin/activate
 
 # Install Dependencies
-pip install -r requirements.txt
-playwright install chromium
+pip install fastapi uvicorn joblib scikit-learn transformers torch python-whois unidecode
 
 ```
 
-### 2. Training the Model
+### 2. Training the "Fast-Path"
 
-To ensure the vectorizer is fitted to the latest dataset:
+To ensure the vectorizer is fitted to the latest N-gram dataset:
 
 ```bash
 python3 src/train_sentry.py
@@ -50,7 +51,7 @@ python3 src/train_sentry.py
 
 ### 3. Launching the API
 
-To host the service on your local network (for teammates to connect):
+To host the service on your local network for cross-device testing:
 
 ```bash
 export PYTHONPATH=$PYTHONPATH:.
@@ -62,50 +63,49 @@ uvicorn src.api:app --host 0.0.0.0 --port 8000 --reload
 
 ## 📡 API Endpoints
 
-### **Health Check**
-
-`GET /health`
-
-Used to verify if the server is online.
-
-### **Analyze Message**
+### Analyze Message
 
 `POST /analyze`
 
-**Payload:**
+**Request Payload:**
 
 ```json
 {
-  "text": "Your message with a link [http://example.com](http://example.com)",
-  "sender": "User_ID_or_Device"
+  "text": "Urg€nt: Your @ccount is flаggеd. Vеrify hеrе: [http://secure-check.in](http://secure-check.in)",
+  "sender": "Security-Dept"
 }
 
 ```
 
-**Response:**
+**Response (Hybrid Verdict):**
 
 ```json
 {
   "verdict": "SCAM",
-  "confidence": "92.50%",
-  "reason": "Agent flagged: Phishing keywords found in page title"
+  "confidence": "94.20%",
+  "logic_route": "Hybrid Ensemble + Intel Audit",
+  "metadata": {
+    "cleaned_text": "urgent: your account is flagged...",
+    "domain_age_days": 4
+  }
 }
 
 ```
 
 ---
 
-## 📊 Features
+## 📊 Elite Features
 
-* **N-Gram Analysis:** Understands phrases like "Bank account" instead of just single words.
-* **Active Logging:** All production traffic is saved to `data/production_logs.csv` for auditing.
-* **Network Ready:** Configured to allow cross-device communication over Wi-Fi.
+* **Ensemble Fusion:** Combines classical ML and NLP Transformers for a balanced Accuracy-Latency trade-off.
+* **Zero-Day Protection:** Automatically flags any domain registered in the last 30 days.
+* **Adversarial Resilience:** Immune to character-replacement tricks (e.g., swapping 'o' with '0').
+* **Active Logging:** Every request is logged to `data/production_logs.csv` for future model retraining.
 
 ---
 
 ## 📂 Project Structure
 
-* `src/`: Core logic (API, Predictor, Investigator, Trainer)
-* `models/`: Saved `.pkl` files (Brain & Vectorizer)
+* `src/`: Core logic (API, Normalizer, Trainer)
+* `models/`: Saved `.pkl` files (RF Brain & Vectorizer)
 * `data/`: Datasets and live production logs
 * `requirements.txt`: Project dependencies
