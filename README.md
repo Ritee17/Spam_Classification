@@ -1,5 +1,5 @@
 # Sentry AI: Agentic Spam & Phishing Detection System
-**Category:** 5th Semester Mini-Project | CSE AIML & IoT  
+**Category:** IIT Kanpur hackathon Project| CSE AIML & IoT  
 **Developer:** Ritee & Team  
 
 Sentry AI is a hybrid security system that moves beyond simple text classification. It uses a **Random Forest** model to detect spam patterns and an **Agentic URL Investigator** (powered by Playwright) to analyze live website destinations for phishing threats.
