@@ -1,1 +1,31 @@
 timestamp,sender,message,verdict,reason
+2026-03-21 09:37:46.061254,Security-Alert,Urg€nt: Your @ccount is lоcked. Vеrify hеrе: http://gla-portal.net,SUSPICIOUS,Hybrid Ensemble
+2026-03-21 09:38:00.779520,Admin-Office,"Dear student, please review the mandatory scholarship compliance document for disbursement: http://university-verify.in",SUSPICIOUS,Hybrid Ensemble
+2026-03-21 09:38:15.939288,Bank-Offers,Claim your ₹5000 cashback reward now: https://bit.ly/3uX7kYt,SUSPICIOUS,Hybrid Ensemble
+2026-03-21 09:38:36.725350,Shubhnag,"Hey Ritee, are we meeting at the GDG event today? Let me know the timing.",SCAM,Hybrid Ensemble
+2026-03-21 09:38:39.402820,Shubhnag,"Hey Ritee, are we meeting at the GDG event today? Let me know the timing.",SCAM,Hybrid Ensemble
+2026-03-21 09:41:10.585472,Shubhnag,"Hey Ritee, are we meeting at the GDG event today? Let me know the timing.",SAFE,Hybrid Ensemble + Casual Intent Filter
+2026-03-21 09:41:49.892629,Shubhnag,"Hey Ritee, are we meeting at the GDG event today? Let me know the timing.",SAFE,Hybrid Ensemble + Casual Intent Filter
+2026-03-21 09:42:04.925244,Security-Alert,Urg€nt: Your @ccount is lоcked. Vеrify hеrе: http://gla-portal.net,SUSPICIOUS,Hybrid Ensemble
+2026-03-21 09:46:33.616032,Security-Alert,Urg€nt: Your @ccount is lоcked. Vеrify hеrе: http://gla-portal.net,SUSPICIOUS,Hybrid Ensemble
+2026-03-21 09:47:00.986188,Shubhnag,"Hey Ritee, are we meeting at the GDG event today? Let me know the timing.",SAFE,Hybrid Ensemble
+2026-03-21 09:48:03.345001,IT-Dept-Alert,"Your income tax refund of ₹15,400 is approved. Claim it here immediately: https://bit.ly/3uX7kYt",SUSPICIOUS,Hybrid Ensemble
+2026-03-21 09:48:20.367777,Secure-Verify,"Unusual login detected on your account. If this was not you, secure your account now: https://tinyurl.com/yf8z2mx9",SAFE,Hybrid Ensemble
+2026-03-21 09:48:45.265735,Netflix-Billing,Your Netflix membership is on hold. Update payment at: http://shorturl.at/abc12,SAFE,Hybrid Ensemble
+2026-03-21 09:51:20.086461,IT-Dept-Alert,"Your income tax refund of ₹15,400 is approved. Claim it here immediately to avoid expiration: https://bit.ly/3uX7kYt",SCAM,Hybrid Ensemble + Adversarial Detection
+2026-03-21 09:51:36.466430,Secure-Verify,"Unusual login detected. If this was not you, secure your account now: https://tinyurl.com/yf8z2mx9",SAFE,Hybrid Ensemble + Adversarial Detection
+2026-03-21 09:51:59.465614,Netflix-Support,Your Netflix membership is on hold. Update payment at: http://netflix-secure-update-2026.xyz,SUSPICIOUS,Hybrid Ensemble + Adversarial Detection
+2026-03-21 09:53:17.432382,Secure-Verify,"Unusual login detected on your account. If this was not you, secure your account now: https://bit.ly/3uX7kYt",SUSPICIOUS,Hybrid Ensemble
+2026-03-21 09:53:28.721175,Netflix-Support,Your Netflix membership is on hold. Update payment at: http://netflix-secure-update-2026.xyz,SAFE,Hybrid Ensemble
+2026-03-21 09:53:39.567621,Netflix-Support,Your Netflix membership is on hold. Update payment at: http://netflix-secure-update-2026.xyz,SAFE,Hybrid Ensemble
+2026-03-21 09:53:50.785322,Shubhnag,"Hey Ritee, are we meeting at the GDG event today? Let me know the timing.",SAFE,Hybrid Ensemble + Casual Intent Filter
+2026-03-21 09:55:25.085383,Secure-Verify,"Unusual login detected on your account. If this was not you, secure your account now: https://bit.ly/3uX7kYt",SUSPICIOUS,Hybrid Ensemble
+2026-03-21 09:55:37.179771,Netflix-Support,Your Netflix membership is on hold. Update payment at: http://netflix-secure-update-2026.xyz,SAFE,Hybrid Ensemble
+2026-03-21 09:55:53.351493,Security-Alert,Urg€nt: Your @ccount is lоcked. Vеrify hеrе: http://gla-portal.net,SUSPICIOUS,Hybrid Ensemble
+2026-03-21 09:56:01.891052,Shubhnag,"Hey Ritee, are we meeting at the GDG event today? Let me know the timing.",SAFE,Hybrid Ensemble + Casual Intent Filter
+2026-03-21 09:56:04.614856,Shubhnag,"Hey Ritee, are we meeting at the GDG event today? Let me know the timing.",SAFE,Hybrid Ensemble + Casual Intent Filter
+2026-03-21 09:56:58.182998,Netflix-Support,Your Netflix membership is on hold. Update payment at: http://netflix-secure-update-2026.xyz,SCAM,Hybrid Ensemble + Adversarial Detection + Infrastructure Kill-Shot
+2026-03-21 09:57:34.183837,GOV-ALRT,Your Aadhaar KYC has expired. Update immediately to avoid bank account suspension: http://aadhaar-kyc-verify-2026.in,SCAM,Hybrid Ensemble + Adversarial Detection + Infrastructure Kill-Shot
+2026-03-21 09:58:06.369932,AMZN-PAY,"Congratulations! You have a pending refund of ₹2,499 from your last Amazon order. Claim now: http://amzn-refund-portal.click",SCAM,Hybrid Ensemble + Adversarial Detection + Infrastructure Kill-Shot
+2026-03-21 09:58:25.206402,Apple-Support,Your iCloud storage is full and your photos will be deleted in 24 hours. Increase limit for free: https://bit.ly/4kS9vR2,SCAM,Hybrid Ensemble + Adversarial Detection + Infrastructure Kill-Shot
+2026-03-21 09:59:10.031995,Apple-Support,Your iCloud storage is full and your photos will be deleted in 24 hours. Increase limit for free: https://bit.ly/4kS9vR2,SCAM,Hybrid Ensemble + Adversarial Detection + Infrastructure Kill-Shot
